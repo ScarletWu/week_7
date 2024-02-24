@@ -4,13 +4,15 @@ library(testthat)
 library(ggplot2)
 
 set.seed(42)
+
 # 20 buildings
+
 n <- 20
 data <- tibble(
   BuildingName = paste("Building", 1:n),
   year = sample(1950:2024, n, replace = TRUE),
   floor = sample(1:100, n, replace = TRUE))
-
+print(data)
 
 p <- ggplot(data, aes(x = year, y = floor)) +
   geom_point() +  
@@ -21,3 +23,6 @@ p <- ggplot(data, aes(x = year, y = floor)) +
   theme_minimal()
 
 print(p)
+
+
+ggsave("Cloud/project/plot.png", p, width = 8, height = 6)
