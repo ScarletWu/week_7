@@ -1,5 +1,6 @@
 library(tidyverse)
 library(ggplot2)
+library(rstanarm)
 
 set.seed(42)
 
@@ -23,4 +24,8 @@ plot1 <- ggplot(data, aes(x = year, y = floor)) +
 print(plot1)
 
 
-ggsave("Cloud/project/plot.png", plo, width = 8, height = 6)
+model <- stan_glm(floor ~ year, data = data, family = gaussian(), chains = 4, iter = 2000)
+
+print(summary(model))
+
+ggsave("Cloud/project/plot.png", plot1)
