@@ -1,6 +1,4 @@
 library(tidyverse)
-library(broom)
-library(testthat)
 library(ggplot2)
 
 set.seed(42)
@@ -14,7 +12,7 @@ data <- tibble(
   floor = sample(1:100, n, replace = TRUE))
 print(data)
 
-p <- ggplot(data, aes(x = year, y = floor)) +
+plot1 <- ggplot(data, aes(x = year, y = floor)) +
   geom_point() +  
   geom_smooth(method = "lm", se = FALSE, color = "blue") + 
   labs(title = "Number of Floors vs. Year of Construction",
@@ -22,7 +20,7 @@ p <- ggplot(data, aes(x = year, y = floor)) +
        y = "Number of Floors") +
   theme_minimal()
 
-print(p)
+print(plot1)
 
 
-ggsave("Cloud/project/plot.png", p, width = 8, height = 6)
+ggsave("Cloud/project/plot.png", plo, width = 8, height = 6)
